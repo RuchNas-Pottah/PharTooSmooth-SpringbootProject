@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view Medicine</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <style>
+      .card {
+          width: 80%;
+          margin: 0 auto;
+      }
+    </style>
+</head>
+<body>
+    <nav id="navbar" style="background-color:  #8bccb3;">
+        <div id="logo">
+            <img th:src="@{images/patient.png}" alt="oopsie caffiene">
+            <span class="navbar-brand p-3 m-1" style="font-size: 30px;
+            color: white;">Admin Dashboard</span>     
+        </div>
+      <ul class="right">
+          <li class="item"><a th:href="@{admindashboard}">Medication Stock</a></li>
+          <li class="item"><a th:href="@{adminorders}">Orders</a></li>
+          <li class="item"><a th:href="@{~/logout}">Logout</a></li>
+      </ul>
+    
+    </nav>
+        <div class="card mt-5">
+            <div class="card-header">
+                <h3 class="text-center" style="color:  #509a7d;">Prescription Status</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive table-scroll mb-0" data-mdb-perfect-scrollbar="true" style="max-height: 400px; overflow-y: auto;">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Prescription ID</th>
+                                <th>Customer ID</th>
+                                <th>Doctor ID</th>
+                                <th>Date of Prescription</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="prescription : ${allpresc}">
+                                <td th:text="${prescription.id}" />
+                                <td th:text="${prescription.customer_id}" />
+                                <td th:text="${prescription.doctor_id}" />
+                                <td th:text="${prescription.date_of_prescription}" />
+                                <td th:if="${prescription.status}" th:text="Verified" />
+                                <td th:if="${!prescription.status}" th:text="Pending" />
+
+                                <td>
+                                    <a th:href="@{'/updateStatus/' + ${prescription.id}}" class="btn btn-outline-success mb-4" th:if="${!prescription.status}">Verify</a>
+                                    <a th:unless="${!prescription.status}" class="btn btn-secondary" disabled="disabled" style="cursor: not-allowed;">Verify</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+</body>
