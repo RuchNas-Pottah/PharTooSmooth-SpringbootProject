@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-aqua"id="nav">
+        <div id="logo">
+            <img th:src="@{images/patient.png}" alt="oopsie caffiene">        
+        </div>
+        <div class="container">
+          <a class="navbar-brand" style="color: white;"th:href="@{/}">Home</a>
+        </div>
+      </nav>
+
+      <!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+  
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+  
+    <!-- Jumbotron -->
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-3 ">
+        </div>
+        <div class="col-lg-6">
+          <div class="card mt-5" style="text-align: center; width:auto;">
+            <div class="card-body">
+              <h2 class="fw-bold mb-5" style="color: #8bccb3;">Sign Up</h2>
+              <form 
+              class="pt-3"
+              action="#"
+              method="POST"
+              th:action="@{/register}">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                     
+                      <label class="form-label" style="color: #8bccb3;" for="form3Example1">First name</label>
+                      <input required
+                        th:value="${customer?.f_name}"
+                        type="text"
+                        class="form-control"
+                        id="form3Example1"
+                        placeholder="First Name"
+                        name="f_name"
+                      />
+                    </div>
+                  </div>
+
+                 <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                     
+                      <label class="form-label" style="color: #8bccb3;" for="form3Example2">Last name</label>
+                      <input required
+                        th:value="${customer?.l_name}"
+                        type="text"
+                        id="form3Example2"
+                        class="form-control"
+                        placeholder="Last Name"
+                        name="l_name"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                     
+                      <label class="form-label" style="color: #8bccb3;" for="form3Example2">Phone Number</label>
+                      <input required
+                        th:value="${customer?.phone_no}"
+                        type="text"
+                        id="form3Example3"
+                        class="form-control"
+                        placeholder="Phone Number"
+                        name="phone_no"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                     
+                      <label class="form-label" style="color: #8bccb3;" for="form3Example2">Date Of Birth</label>
+                      <input required
+                        th:value="${customer?.dob}"
+                        type="date"
+                        id="form3Example4"
+                        class="form-control"
+                        placeholder="Date of Birth"
+                        name="dob"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                     
+                      <label class="form-label" style="color: #8bccb3;" for="form3Example2">Address</label>
+                      <input required
+                        th:value="${customer?.address}"
+                        type="text"
+                        id="form3Example5"
+                        class="form-control"
+                        placeholder="Address"
+                        name="address"
+                      />
+                    </div>
+                  </div> 
+                </div>
+  
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  
+                  <label class="form-label" style="color: #8bccb3;"for="form3Example3">Email address</label>
+                  <input required th:value="${users.userEmail}"
+                        type="email"
+                        id="form3Example6"
+                        class="form-control"
+                        placeholder="Email"
+                        name="userEmail" />
+                </div>
+  
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  
+                  <label class="form-label" style="color: #8bccb3;" for="form3Example4">Password</label>
+                  <input required
+                        type="password"
+                        th:value="${users.password}"
+                        cclass="form-control"
+                        id="form3Example7"
+                        placeholder="Password"
+                        name="password"
+                      />
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" style="color: #8bccb3;" class="btn btn-outline-success mb-4">
+                  Sign Up
+                </button>
+                <p style="color:#85e4c0;">Already have an account?<a th:href="@{/login}">Login here</a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 mb-5 mb-lg-0">
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+</body>
+</html>

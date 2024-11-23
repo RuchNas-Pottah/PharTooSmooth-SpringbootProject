@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <style>
+      .card {
+          width: 80%;
+          margin: 0 auto;
+      }
+    </style>
+  
+</head>
+
+<body>
+    <nav id="navbar" style="background-color:  #8bccb3;">
+        <div id="logo">
+            <img th:src="@{images/patient.png}" alt="oopsie caffiene"> 
+            <span class="navbar-brand p-3 m-1" style="font-size: 30px;
+            color: white;">Admin Dashboard</span>       
+        </div>
+      <ul class="right">
+          <li class="item"><a th:href="@{adminpresc}">Prescriptions</a></li>
+          <li class="item"><a th:href="@{adminorders}">Orders</a></li>
+          <li class="item"><a th:href="@{~/logout}">Logout</a></li>
+      </ul>
+    
+    </nav>
+    <section >
+
+      <div class="bg-image h-100 m-5">
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="text-center" style="color: #509a7d;">Medicine Stock</h3>
+                </div>
+                  <div class="card-body m-1">
+                    <div class="table-responsive table-scroll mb-0" data-mdb-perfect-scrollbar="true" style="max-height: 400px; overflow-y: auto;">
+                      <table class="table table-striped mb-0">
+                        <thead>
+                          <tr>
+                            <th scope="col">Category Id</th>
+                            <th scope="col">Category Name</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr th:each="c: ${categories}">
+                            <td th:text="${c.cat_id}" />
+                            <td th:text="${c.cat_name}" />
+                            <td><a class="btn btn-outline-success mb-0" th:href="@{/{id}_viewmedicine(id=${c.cat_id})}">View Medicine Stock</a> <a class="btn btn-outline-success mb-0" th:href="@{/{catId}/delcategory(catId=${c.cat_id})}" >Delete</a> </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+            <div class="add-category-button ms-5 me-5">
+                <nav id="navbar" style="background-color: white;">
+                  <button type="button" style="margin-left: 45%;" class="btn btn-outline-success btn-lg mb-0 me-5" data-bs-toggle="modal" data-bs-target="#addName">Add Category</button>
+                 </nav>
+                 <div class="modal fade" id="addName" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" style="color: #8bccb3;" id="exampleModalLabel" th:inline="text">Add Category</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form class="forms-sample" method="POST" th:action="@{/addcategory}">
+                            <div class="form-outline">
+
+                                <input type="text" id="form3Example3" class="form-control" placeholder="Name" th:value="${category?.cat_name}" name="cat_name" />
+                                <label class="form-label" style="color:  #8bccb3;" for="form3Example3">Category Name</label>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-success " style="color: #8bccb3;" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-outline-success " style="color: #8bccb3;">Add</button>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+      </section>
+      
+</body>
+</html>

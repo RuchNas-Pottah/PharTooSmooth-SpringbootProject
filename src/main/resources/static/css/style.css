@@ -1,0 +1,216 @@
+h1{
+    color: #8bccb3;
+}
+
+/* navigation bar */
+
+#navbar{
+    display: flex;
+    align-items: center;
+}
+/*navigation bar: logo and image */
+#logo{
+    
+    margin-left: 25px;
+}
+#logo img{
+    height: 60px;
+    margin-left: 25px;
+}
+/*navigation bar: list styling */
+#navbar::before{
+    content: "";
+    background-color:black;
+    position: absolute;
+    height: 0%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+#navbar ul{
+    display: flex;
+}
+
+
+#navbar ul li{
+    list-style: none;
+    font-size: 1.3rem;
+}
+#navbar ul li a{
+    color: white;
+    display: block;
+    padding: 3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+#navbar ul li a:hover{
+    color: black;
+    background-color: #8bccb3;
+}
+
+.navbar-aqua
+{
+    background-color: #8bccb3;
+}
+
+.navbar-aqua:hover{
+    color: black;
+    background-color: #73caa9;
+}
+
+ul.right {
+    margin-left: auto; /* Push the right-aligned items to the right */
+}
+
+/* home pic section */
+#home{
+    display: flex;
+    flex-direction: column;
+    padding: 3px 200px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
+#home::before{
+    content: "";
+    background: url('../images/anunay-rai-NQ55jrGwuXM-unsplash.jpg') no-repeat center center/cover;
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.container.marketing {
+    padding: 80px; /* Adjust the value to increase the padding as desired */
+}
+
+.login-btn{
+    background-color: #8bccb3;
+}
+
+#carouselExampleControl{
+    margin-top: 15px;
+}
+
+#carouselExampleControls{
+    margin-top: 15px;
+}
+
+/* Card Container */
+.card{
+    width: 300px;
+    background-color:  #73caa9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    display: inline-block;
+}
+
+/* Card Top */
+.card-img-top{
+    padding-top: 0%;
+    width: 100px;
+    height: 150px;
+}
+
+/* Card Header */
+.card-title{
+    padding: 10px;
+    text-align: center;
+    color:#2d664f;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Card Body */
+.card-text{
+    padding: 10px;
+    background-color: white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+/* Table sttyling */
+.table {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Center the total amount */
+.center {
+    text-align: center;
+}
+
+/* Stylish box around the total amount */
+.total-box {
+    margin-top: 3%;
+    border: 2px solid #73caa9;
+    /* color: #73caa9; */
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+/* Cart bottom */
+.address-box {
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #73caa9;
+    padding: 10px;
+    border-radius: 5px;
+}
+.address-box input {
+    width: 100%;
+    border: none;
+    background-color: #f0f0f0;
+}
+
+.btn-finalize {
+    margin-left: 100px;
+}
+
+
+/* Admin Area */
+.intro {
+    height: 100%;
+}
+
+table td,table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+  
+thead th {
+    color: #fff;
+}
+  
+.table-scroll {
+    border-radius: .5rem;
+}
+  
+.table-scroll table thead th {
+    font-size: 1.25rem;
+}
+
+thead {
+    top: 0;
+    position: sticky;
+}
+
+.table thead th {
+    background-color:#8bccb3;
+    color: white;
+}
+

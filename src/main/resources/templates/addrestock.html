@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view Medicine</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <style>
+      .card {
+          width: 80%;
+          margin: 0 auto;
+      }
+    </style>
+</head>
+
+
+<body>
+    <nav id="navbar" style="background-color:  #8bccb3;">
+        <div id="logo">
+            <img th:src="@{images/patient.png}" alt="oopsie caffiene">        
+        </div>
+      <ul class="right">
+          <li class="item"><a th:href="@{adminpresc}">Prescriptions</a></li>
+          <li class="item"><a th:href="@{admindashboard}">MedStock</a></li>
+          <li class="item"><a th:href="@{adminorders}">Orders</a></li>
+          <li class="item"><a th:href="@{~/logout}">Logout</a></li>
+      </ul>
+    
+    </nav>
+
+    <section >
+        <div class="row py-1">
+            <div class="col-lg-3 col-md-2">
+            </div>
+            <div class="col-lg-6 col-md-3 mt-5">
+                <div class="card" style="color:  #8bccb3;">
+                    <div class="card-body p-5 shadow-5 text-center">
+                        <h2 class="mb-4" style="color:  #4a9e7e;">Restock [[${medicine.name}]]</h2>
+                        <form class="forms-sample" method="POST" th:action="@{/{catId}/{id}/restock(catId=${category.cat_id},id=${medicine.id})}">
+                          
+                          <div class="form-outline mb-2 me-5 ms-5">
+                            <input type="number" min="0" id="form3Example3" class="form-control" placeholder="0" th:value="${quantity.quantity}" name="quantity" />
+                            <label class="form-label" style="color:  #8bccb3;"for="form3Example3">Quantity</label>
+                          </div>
+            
+                          <!-- Submit button -->
+                          <button type="submit"  class="btn btn-outline-success btn-lg mb-2">
+                            Restock
+                          </button>
+                        </form>
+                      </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-3 col-md-2">
+            </div>
+        </div>
+           
+      </section>
+      
+</body>
+</html>

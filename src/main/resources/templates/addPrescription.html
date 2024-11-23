@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add Prescription</title>
+</head>
+<body>
+    <nav id="navbar" class="navbar navbar-aqua">
+        <div id="logo">
+            <img th:src="@{images/patient.png}" alt="oopsie caffiene">        
+        </div>
+      <ul class="right">
+          <li class="item"><a th:href="@{'/dashboardu/' + ${custEmail}}">Prescriptions</a></li>
+          <li class="item"><a th:href="@{/profile}">Profile</a></li>
+          <li class="item"><a th:href="@{~/logout}">Logout</a></li>
+    
+      </ul>
+    
+    </nav>
+    <br><br>
+    <div class="card mx-auto" style="width: 600px; padding: 2%;">
+        <h1 class="card-title text-center" style="color: #73caa9;">Add Prescription</h1>
+        <form th:action="@{/savePrescription}" th:object="${prescriptions}" method="post" style="margin-top: 3%;">
+            <p th:if="${error}" class="error text-center">Constraints not followed</p>
+            <div class="form-group row">
+                <label class="col-4 col-form-label text-right">Doctor ID: </label>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="doctor_id">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label text-right">Date of Prescription: </label>
+                <div class="col-8">
+                    <input type="date" class="form-control" name="date_of_prescription">
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 2%;">
+                <button type="submit" class="btn btn-outline-success">Add this!!</button>
+            </div>
+        </form>
+    </div>
+    
+    
+</body>
+</html>
